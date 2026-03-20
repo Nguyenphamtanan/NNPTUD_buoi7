@@ -62,10 +62,12 @@ router.post('/changepassword',checkLogin,async function(req,res){
 
     if(newpassword.length < 6){
         return res.status(400).send("password moi phai >= 6 ky tu")
+
+
     }
 
     let user = req.user
-
+    
     if(!bcrypt.compareSync(oldpassword,user.password)){
         return res.status(403).send("old password sai")
     }
